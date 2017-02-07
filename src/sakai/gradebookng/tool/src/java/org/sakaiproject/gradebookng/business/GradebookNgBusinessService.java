@@ -1,6 +1,7 @@
 package org.sakaiproject.gradebookng.business;
 
 import java.math.RoundingMode;
+import java.text.Collator;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -118,6 +119,8 @@ public class GradebookNgBusinessService {
 	private SecurityService securityService;
 
 	public static final String ASSIGNMENT_ORDER_PROP = "gbng_assignment_order";
+
+	private Collator collator = Collator.getInstance();
 
 	/**
 	 * Get a list of all users in the current site that can have grades
@@ -1227,8 +1230,9 @@ public class GradebookNgBusinessService {
 	class LastNameComparator implements Comparator<User> {
 		@Override
 		public int compare(final User u1, final User u2) {
-			return new CompareToBuilder().append(u1.getLastName(), u2.getLastName())
-					.append(u1.getFirstName(), u2.getFirstName()).toComparison();
+			collator.setStrength(Collator.PRIMARY);
+			return new CompareToBuilder().append(u1.getLastName(), u2.getLastName(), collator)
+					.append(u1.getFirstName(), u2.getFirstName(), collator).toComparison();
 		}
 	}
 
@@ -1239,8 +1243,9 @@ public class GradebookNgBusinessService {
 	class FirstNameComparator implements Comparator<User> {
 		@Override
 		public int compare(final User u1, final User u2) {
-			return new CompareToBuilder().append(u1.getFirstName(), u2.getFirstName())
-					.append(u1.getLastName(), u2.getLastName()).toComparison();
+			collator.setStrength(Collator.PRIMARY);
+			return new CompareToBuilder().append(u1.getFirstName(), u2.getFirstName(), collator)
+					.append(u1.getLastName(), u2.getLastName(), collator).toComparison();
 		}
 	}
 
