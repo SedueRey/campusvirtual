@@ -190,53 +190,46 @@ function resizeFrame(){
 								#set ($listDisplay="none")
 							#end
 								<div class="table-responsive">
-								<table id="groupTable" style="display:$listDisplay" class="table table-hover table-striped table-bordered"  summary="$tlang.getString("revise.group.list.summary")">
-								<caption class="skip" style="display:none">$tlang.getString("displayto.selected")</caption>
-									<tr>
-										<th headers="selectAllGroups" class="attach">
-											<input type="checkbox" name="selectall" value="" id="selectall" title="$tlang.getString("revise.group.list.toggle")" onclick="javascript:toggleSelectAll(this, 'selectedGroups')"  />
-										</th>
-										<th headers="groupname">
-											$tlang.getString("revise.group.list.title")
-										</th>
-										<th headers="groupdescription">
-											$tlang.getString("revise.group.list.desc")
-										</th>
-									</tr>
-									#foreach ($group in $!groups)
+									<table id="groupTable" style="display:$listDisplay" class="table table-hover table-striped table-bordered"  summary="$tlang.getString("revise.group.list.summary")">
+									<caption class="skip" style="display:none">$tlang.getString("displayto.selected")</caption>
 										<tr>
-											<td headers="selectAllGroups" class="attach">
-												#set($selected=false)
-												#foreach($aGroupRef in $announceToGroups)
-													#set($aGroup = $!site.getGroup($!aGroupRef))
-													#if ($!group.Id == $!aGroup.Id)
-														#set($selected = true)
+											<th id ="selectAllGroups" class="attach">
+												<input type="checkbox" name="selectall" value="" id="selectall" title="$tlang.getString("revise.group.list.toggle")" onclick="javascript:toggleSelectAll(this, 'selectedGroups')"  />
+											</th>
+											<th id ="groupname">
+												$tlang.getString("revise.group.list.title")
+											</th>
+											<th id ="groupdescription">
+												$tlang.getString("revise.group.list.desc")
+											</th>
+										</tr>
+										#foreach ($group in $!groups)
+											<tr>
+												<td headers="selectAllGroups" class="attach">
+													#set($selected=false)
+													#foreach($aGroupRef in $announceToGroups)
+														#set($aGroup = $!site.getGroup($!aGroupRef))
+														#if ($!group.Id == $!aGroup.Id)
+															#set($selected = true)
+														#end
 													#end
-												#end
-													#if($groups.size() == 1) #set($selected=true) #end
-													#set($disabled=true)
-				##									#if($allowedRemoveGroups.contains($group)) 
+														#if($groups.size() == 1) #set($selected=true) #end
+														#set($disabled=true)
 														<input type="checkbox" name="selectedGroups" id="group-$group.Id" title="$validator.escapeHtml($group.title)" value="$group.Id" #if($selected) checked="checked"#end />
-				##									#else
-				##										<img src="#imageLink("sakai/checkon.gif")" border="0" width="17" height="13" align="top" />
-				##									#end
-													
-				##									<input #if($disabled) type="hidden" #else type="checkbox" #end name="selectedGroups" id="group-$group.Id" title="$group.Title" value="$group.Id" #if($selected) checked="checked"#end/>
-				##									#if($disabled && $selected)<img src="#imageLink("sakai/checkon.gif")" border="0" width="17" height="13" align="top" />#end
-												</td>
-												<td headers="groupname" nowrap="nowrap">
-													<label for="group-$group.Id">
-														$validator.escapeHtml($group.Title)
-													</label>	
-												</td>
-												<td headers="groupdescription" width="100%"> ##mozilla does not resize table children dynamically , so set here
-													#set($description = "")
-													#set($description = $group.Description)
-													$validator.escapeHtml($!description)
-												</td>
-											</tr>
-										#end
-									</table>
+													</td>
+													<td headers="groupname" nowrap="nowrap">
+														<label for="group-$group.Id">
+															$validator.escapeHtml($group.Title)
+														</label>	
+													</td>
+													<td headers="groupdescription" width="100%"> ##mozilla does not resize table children dynamically , so set here
+														#set($description = "")
+														#set($description = $group.Description)
+														$validator.escapeHtml($!description)
+													</td>
+												</tr>
+											#end
+										</table>
 									</div>
 							#else
 								<div class="checkbox">
@@ -320,7 +313,6 @@ function resizeFrame(){
 								#end
 								</ul>
 							#end
-						</div>
 					#end
 				#end
 		        </fieldset>
