@@ -1,0 +1,85 @@
+<!-- START VM udl_announcements-coord-groups.vm -->
+<div class="checkbox">
+	<label for="groups">
+		<input type="radio" name="announceTo" id="groups" 
+		value="groups" #if(!$!pubview && ($!announceTo == "groups" || $!message.AnnouncementHeader.Access == $groupAccess))checked="checked"#end 
+		onclick="$('#groupTable').fadeIn('slow');resizeFrame()"  />
+		$tlang.getString("displayto.selected")
+	</label>
+</div>
+#if(!$!pubview && ($!announceTo == "groups" || $!message.AnnouncementHeader.Access == $groupAccess))
+	#set ($listDisplay="block")
+#else
+	#set ($listDisplay="none")
+#end
+
+<ul id="groupTable" class="llistacursos" style="display:$listDisplay">
+#foreach ($cursgroup in $!coordgroups)
+	<li> 
+		
+		#set($group = $!cursgroup.getGroup())
+		#set($selected=false)
+
+		#foreach($aGroupRef in $announceToGroups)
+			#set($aGroup = $!site.getGroup($!aGroupRef))
+			#if ($!group.Id == $!aGroup.Id)
+				#set($selected = true)
+			#end
+		#end
+
+		#if($groups.size() == 1) #set($selected=true) #end
+		#set($disabled=true)
+		
+		<input type="checkbox" name="selectedGroups" id="group-$group.Id" title="$validator.escapeHtml($group.title)" value="$group.Id" #if($selected) checked="checked"#end />
+		<div class="groupTitle">$validator.escapeHtml($!group.Title) <span class="groupDescription"> ($validator.escapeHtml($!group.Description))</span></div>
+		
+
+		#if ($!cursgroup.hasChildren())
+			<ul class="llistaassignatures">
+				#foreach ($assiggroup in $!cursgroup.getChildren())
+				<li> 
+					#set ($group2 = $!assiggroup.getGroup())
+					
+					#set($selected=false)
+					#foreach($aGroupRef2 in $announceToGroups)
+						#set($aGroup2 = $!site.getGroup($!aGroupRef2))
+						#if ($!group2.Id == $!aGroup2.Id)
+							#set($selected = true)
+						#end
+					#end
+					#if($groups.size() == 1) #set($selected=true) #end
+					#set($disabled=true)
+					<input type="checkbox" name="selectedGroups" id="group-$group2.Id" title="$validator.escapeHtml($group2.title)" value="$group2.Id" #if($selected) checked="checked"#end />
+					<div class="groupTitle">$validator.escapeHtml($!group2.Title) <span class="groupDescription"> ($validator.escapeHtml($!group2.Description))</span></div>
+					
+					#if ($!assiggroup.hasChildren())
+						<ul class="llistagrups">
+						#foreach ($grupgroup in $!assiggroup.getChildren())
+							<li> 
+								#set ($group3 = $!grupgroup.getGroup())
+								
+								#set($selected=false)
+								#foreach($aGroupRef3 in $announceToGroups)
+									#set($aGroup3 = $!site.getGroup($!aGroupRef3))
+									#if ($!group3.Id == $!aGroup3.Id)
+										#set($selected = true)
+									#end
+								#end
+								#if($groups.size() == 1) #set($selected=true) #end
+								#set($disabled=true)
+								<input type="checkbox" name="selectedGroups" id="group-$group3.Id" title="$validator.escapeHtml($group3.title)" value="$group3.Id" #if($selected) checked="checked"#end />
+								<div class="groupTitle">$validator.escapeHtml($!group3.Title) <span class="groupDescription"> ($validator.escapeHtml($!group3.Description))</span></div>
+								
+							</li>
+						#end
+						</ul>
+					#end
+				</li>
+			#end
+		</ul>
+		#end
+		
+	</li>
+#end
+</ul>
+<!-- END VM udl_announcements-coord-groups.vm -->
