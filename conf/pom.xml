@@ -644,6 +644,7 @@
 									<outputDir>target/${serverConfId}</outputDir>
 									<includes>
 										<include>tomcat/bin/setenv.sh</include>
+										<include>tomcat/conf/context.xml</include>
 										<include>tomcat/conf/server.xml</include>
 										<include>tomcat/conf/tomcat-users.xml</include>
 										<include>tomcat/conf/log4j.properties</include>
