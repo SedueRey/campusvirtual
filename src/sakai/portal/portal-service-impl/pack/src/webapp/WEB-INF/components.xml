@@ -9,8 +9,9 @@
           >
 	       <property name="siteNeighbourhoodService" ><ref bean="org.sakaiproject.portal.api.SiteNeighbourhoodService" /></property>
 	       <property name="editorRegistry"><ref bean="org.sakaiproject.portal.api.EditorRegistry" /></property>
-          <property name="portalLinks"><value></value></property>
+           <property name="portalLinks"><value></value></property>
 	       <property name="contentHostingService"><ref bean="org.sakaiproject.content.api.ContentHostingService" /></property>
+	       <property name="userDirectoryService"><ref bean="org.sakaiproject.user.api.UserDirectoryService" /></property>
     </bean>
     <bean id="org.sakaiproject.portal.api.PortalService.portletRegistryListener"
           class="org.sakaiproject.portal.service.SakaiPortletRegistryListener"
