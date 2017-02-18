@@ -12,7 +12,7 @@ body{
 		border-top: 95px solid $primary-color;
 		padding: 75px 0 0 260px;
 		@media #{$phone}{
-			border-top: 100vh solid $primary-color;
+			border-top: 75vh solid $primary-color;
 			padding: 75px 0 0 0;
 		}
 		&:before{
@@ -67,8 +67,7 @@ body{
     @media #{$desktop}{
     }
     @media #{$phone}{
-    	bottom: 80px;
-		top: auto;
+    	top: 55vh;
     	width: 100%;
     	text-align: center;
     	left: 0;
