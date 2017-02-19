@@ -3,7 +3,7 @@
  */
 
 function f_scrollTop(){
-    return f_filterResults(window.pageYOffset ? window.pageYOffset : 0, document.documentElement ? document.documentElement.scrollTop : 0, document.body ? document.body.scrollTop : 0);
+    // Mantengo la función porque es llamada por el velocity
 }
 
 function f_filterResults(n_win, n_docel, n_body){
@@ -44,3 +44,5 @@ $PBJQ(document).ready(function(){
 		}
 	});
 });
+
+smoothScroll.init();
