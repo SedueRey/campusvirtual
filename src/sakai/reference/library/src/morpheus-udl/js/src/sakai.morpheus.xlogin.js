@@ -2,6 +2,10 @@
 
 $PBJQ(document).ready(function(){
 
+  if( $PBJQ( "#Mrphs-xlogin" ).length == 1 ){
+    $('body').addClass('xlogin-body-container');
+  }
+
   if( $PBJQ('#loginLink2').length == 1 ){
 
     $PBJQ('#loginLink2').click( function( e ){

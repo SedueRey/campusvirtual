@@ -7,11 +7,15 @@ body{
 	font-size: 	 $default-font-size !important; // Bootstrap Tool error
 	font-weight: $default-font-weight;
 	line-height: 1.55;					// http://practicaltypography.com/line-spacing.html
+	transition: background 0.15s linear;
 	&.#{$namespace}portalBody{
 		background:  $portal-background-color;
 		@media #{$phone}{
 			padding: 2.8em 0 0 0;
 		}
+	}
+	&.#{$namespace}portalBody.xlogin-body-container{
+		background: #968e95;
 	}
 }
 
