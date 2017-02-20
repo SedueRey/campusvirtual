@@ -388,7 +388,7 @@ public class ActesImpl implements Actes {
 				LiniaActaServ aux = (LiniaActaServ) it.next();
 			
 				//Preparem el procediment
-				call = conn.prepareCall("{call ALU$IOLAC.PR_UPDATE(?,?,?,?,?,?,?,?,?,?,?,?)}");
+				call = conn.prepareCall("{call ALU$IOLAC.PR_UPDATE(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 				
 				//Inserim els parametres
 				call.setString(1,aux.getPla_codalf()); 
@@ -408,9 +408,11 @@ public class ActesImpl implements Actes {
 				else 
 					call.setString(9,null);
 				
-				call.setString(10,aux.getTqu_codalf());
-				call.setString(11,aux.getPac_codnum());
-				call.setString(12,aux.getPla_codalfmat());
+				Double provaZero = 0.0;
+				call.setDouble(10,provaZero);
+				call.setString(11,aux.getTqu_codalf());
+				call.setString(12,aux.getPac_codnum());
+				call.setString(13,aux.getPla_codalfmat());
 				
 			/*	System.out.println("Dades de la linia" +
 				"1 " +aux.getPla_codalf() + "\n" +  
