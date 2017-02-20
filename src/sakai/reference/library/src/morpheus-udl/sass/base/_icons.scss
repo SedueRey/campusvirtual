@@ -92,20 +92,15 @@
 	.icon-sakai-clip{                       @extend .fa-paperclip;}
 	.icon-sakai-check{                      @extend .fa-check;}	
 	.icon-sakai-privacy{					@extend .fa-user-secret;}
-	// icons for UM Tools
-	.icon-sakai-umusync{ @extend .fa-gear; }
-
 	// Contrib tools
 	.icon-sakai-clog{ @extend .fa-sticky-note-o; }
-	.icon-sakai-bbb{ @extend .fa-video-camera; }
+	.icon-sakai-videoconference-connect{ @extend .fa-video-camera; }
 	.icon-sakai-presence{ @extend .fa-users; }
 	.icon-sakai-rsf-evaluation{             @extend .fa-commenting;}
+	// UdL Tools
 	.icon-sakai-iframe-intranet{ @extend .fa-sitemap;}
-	.icon-sakai-iframe-actes{ @extend .fa-file-excel-o};
-	.icon-sakai-iframe-expedient{ @extend .fa-graduation-cap};
+	.icon-sakai-iframe-actes{ @extend .fa-file-excel-o}
+	.icon-sakai-iframe-expedient{ @extend .fa-graduation-cap}
 	.icon-sakai-iframe-utilitats{ @extend .fa-briefcase};
 	.icon-sakai-guiadocent-ice{ @extend .fa-file-o; }
-	
-	
-	
 }

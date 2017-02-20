@@ -140,7 +140,8 @@ $sites-nav-submenu-item-selected-color:     $sites-nav-menu-item-selected-color 
 $sites-nav-submenu-item-selected-border:    none !default;
 
 /* Tool Menu */
-$tool-menu-width: 9.5em !default;
+$tool-menu-width: 7.5em !default;
+$tool-menu-width-collapsed: $tool-menu-width / 2 !default;
 
 /* Navigation Hierarchy */
 $hierarchy-size: 3.5em;
