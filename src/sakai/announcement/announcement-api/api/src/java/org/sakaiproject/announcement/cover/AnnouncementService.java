@@ -549,4 +549,19 @@ public class AnnouncementService
 		return service.getMessages(channelReference,filter, order, merged);	
 	}
 	
+	// saves entity references for App notifications
+	public static void saveReferenceToPush(String reference){
+		org.sakaiproject.announcement.api.AnnouncementService service = getInstance();
+		if (service != null){
+			service.saveReferenceToPush(reference);
+		}
+	}
+	
+	// delete entity references for App notifications
+		public static void deleteReferenceToPush(String reference){
+			org.sakaiproject.announcement.api.AnnouncementService service = getInstance();
+			if (service != null){
+				service.deleteReferenceToPush(reference);
+			}
+		}
 }

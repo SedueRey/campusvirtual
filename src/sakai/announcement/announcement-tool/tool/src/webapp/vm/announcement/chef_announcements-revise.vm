@@ -416,6 +416,16 @@ function resizeFrame(){
 					</div>
 				</div>	
 			#end
+			
+			#if ($sendApp)
+			<div class="form-group row">
+				<div class="col-md-10">
+					<label for="hidden_false">
+						<input type="checkbox" id="sendApp" name="sendApp" value="true"> $tlang.getString("appMobil.send")
+                    </label>
+                </div>
+			</div>
+		#end
 		</div>	
 		
 		#if ($notiHistory)
@@ -471,6 +481,7 @@ function resizeFrame(){
 			</table>
 			</div>
 		#end
+
 		<p class="act act-outer">
 				<input type="button" class="active" name="post" accesskey="s"  id="saveChanges"  value=
 					#if ( $newAnn =="true")				
