@@ -222,17 +222,18 @@ nav#subSites{
 				width: calc( 25% - 1px );
 			}
 			.#{$namespace}toolsNav__menuitem--icon{
-				margin: 0 0.25em 0 0;
+				display: block;
+				margin: 0 0 0.25em 0;
 			}
 			a{
 				border-bottom: 1px solid darken( $tool-menu-background-color, 10% );
 				color: $tool-menu-color;
 				display: block;
 				font-family: $header-font-family;
-				font-size: 0.9em;
+				font-size: 0.85em;
 			    line-height: 1.25;
-				padding: 0.5em 0.25em 0.5em 0.75em;
-				text-align: left;
+				padding: 0.35em 0.25em 0.35em 0.25em;
+				text-align: center;
 				text-decoration: none;
 				@media #{$phone}{
 					font-size: 0.85em;
@@ -249,7 +250,7 @@ nav#subSites{
 					padding: 0.85em 0.25em 0.1em;
 				}
 				.#{$namespace}toolsNav__menuitem--title{
-					display: inline;
+					display: block;
 					max-width: 100%;
 					white-space: normal;
 					@media #{$phone}{

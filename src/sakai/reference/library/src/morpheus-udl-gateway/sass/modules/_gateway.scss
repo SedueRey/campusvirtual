@@ -38,7 +38,7 @@
 	z-index: 99;
 	padding: 7px 5px 5px 0;
 	@media #{$phone}{
-		top: 20vh;
+		top: 17vh;
 	    z-index: 99;
 	    padding: 19px 5px 5px 0;
 	}
@@ -68,7 +68,7 @@
 	}
 	@media #{$phone}{
 		position: absolute;
-		top: 65vh;
+		top: 46vh;
 		right: 0;
 		z-index: 2;
 		left: 0;
@@ -149,7 +149,7 @@
 	} 
 	@media #{$phone}{ 
 		background: transparent;
-		top: 20vh;
+		top: 17vh;
 		left: 8px;
 		right: 50%;
 		.Mrphs-toolsNav__menuitem--help{

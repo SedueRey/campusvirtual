@@ -41,4 +41,20 @@
 		border: 1px solid darken( $tool-background-color, 10% );
 		border-radius: 4px;		
 	}	
+
+	.llistacursos>li
+	{ margin-bottom: 10px; display: block; width: 100%; border: 1px dashed #dadada; }
+	.llistacursos li
+	{ padding-top:10px; }
+	.llistacursos>li .groupTitle
+	{ display: inline-block; width: 95%; vertical-align: top; }
+	.llistacursos>li .groupDescription{ 
+		display: inline-block; 
+		font-size: 0.9em; 
+		font-style: italic; 
+		color: #999; 
+	}
+	.llistaassignatures { list-style: none; }
+	.llistagrups { list-style: none; }
+	.llistaassignatures>li:nth-child(odd) {background: #ECECEC}
 }
