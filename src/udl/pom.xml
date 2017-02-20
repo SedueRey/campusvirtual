@@ -14,14 +14,14 @@
     <packaging>pom</packaging>
 	
 	<modules>
-		<!-- <module>datacollector</module>
+		<module>datacollector</module>
 		<module>directori</module>
 		<module>actes</module>
 		<module>enquestes</module>
 		<module>helpdesk</module>
-		<module>reports</module> -->
+		<module>reports</module>
 		<module>cm</module>
-		<!-- <module>udl-jobs</module> -->
+		<module>udl-jobs</module>
 	</modules>    
     
 </project>
