@@ -17,7 +17,7 @@
 		<module>datacollector</module>
 		<module>directori</module>
 		<module>actes</module>
-		<module>enquestes</module>
+		<module>enqvirtual</module>
 		<module>helpdesk</module>
 		<module>reports</module>
 		<module>cm</module>
