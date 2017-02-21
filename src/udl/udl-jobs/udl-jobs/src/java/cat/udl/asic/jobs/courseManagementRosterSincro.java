@@ -96,7 +96,7 @@ public class courseManagementRosterSincro implements Job{
 		actAsAdmin();
 				
 		//recuperem term del nom del job
-		String jobName = context.getJobDetail().getName();
+		String jobName = context.getJobDetail().getKey().getName();
 		if (jobName != null) {
 			String[] splitJobName = termEidPattern.split(jobName);			
 			if (splitJobName.length == 2) {
@@ -132,7 +132,7 @@ public class courseManagementRosterSincro implements Job{
         		sakaiConnection.setAutoCommit(false);        		
         		sakaiStatement = sakaiConnection.prepareStatement(sqlSelectRealms);
         		sakaiStatement.setString(1,academicSessionEid);  
-        		ResultSet rst = sakaiStatement.executeQuery();   
+        		ResultSet rst = sakaiStatement.executeQuery();
         		
         		while (rst.next()) {        			
         			site_id = rst.getString("SITE_ID");        			        		
