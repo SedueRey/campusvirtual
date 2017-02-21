@@ -135,10 +135,11 @@ public abstract class SectionManagerImpl implements SectionManager, SiteAdvisor 
     	// Be very careful...
 
 		// If we're on a non-course site, do nothing
-		if( ! "course".equalsIgnoreCase(site.getType())) {
+    	/*** UDL mireia (17/02/2017): treure comprovacio de si es tipus curs per tal que actualitzi sempre tots els sites, intranet, etc.
+	  	if( ! "course".equalsIgnoreCase(site.getType())) {
 			if(log.isDebugEnabled()) log.debug("SiteAdvisor " + this.getClass().getCanonicalName() + " ignoring site " + site.getTitle() + ", which is not a course site");
 			return;
-		}
+		}*/
 		
 		// Get our app config and the site properties
 		ExternalIntegrationConfig appConfig = getConfiguration(null);

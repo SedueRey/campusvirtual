@@ -26,9 +26,9 @@
 		Configuration object which can safely be overridden by a deployment's
 		sakai-configuration.xml file.
 	-->
-	<util:map id="org.sakaiproject.coursemanagement.GroupProviderConfiguration">
+		<util:map id="org.sakaiproject.coursemanagement.GroupProviderConfiguration">
 		<entry key="siteRoleResolutionOrder">
-						<list>
+			<list>
 				<!-- UDL Canviem els noms dels rols 
 				<value>Instructor</value>
 				<value>Teaching Assistant</value>
@@ -38,6 +38,8 @@
 				<value>Coordinador</value>
 				<value>Membre comissió</value>
 				<value>Professor</value>
+				<value>PAS</value>
+				<value>Genèric</value>				
 				<value>maintain</value>
 				<value>Professor de pràctiques</value>
 				<value>Docent</value>
@@ -47,6 +49,8 @@
 				<value>access</value>
 			</list>
 		</entry>
+		<!-- UDL -->
+		<!--<entry key="officialInstructorToSiteRole" value="Instructor"/>-->
 		<entry key="officialInstructorToSiteRole" value="Professor"/>
 		<entry key="enrollmentStatusToSiteRole">
 			<map>
@@ -75,10 +79,12 @@
 			FI UDL -->
 			<map>
 				<entry key="I" value="Professor"/>
+				<entry key="G" value="Genèric"/>				
 				<entry key="GSI" value="Professor de pràctiques"/>
-				<entry key="S" value="Estudiant"/>
-				<entry key="SERAS" value="Erasmus"/>			
 				<entry key="IET" value="Docent"/>
+				<entry key="PAS" value="PAS"/>
+				<entry key="S" value="Estudiant"/>
+				<entry key="SERAS" value="Erasmus"/>							
 				<entry key="SET" value="Estudiant"/>
 				<entry key="SETERAS" value="Erasmus"/>
 			</map>
@@ -98,8 +104,7 @@
 				<entry key="C" value="Convidat"/>
 			</map>
 		</entry>
-	</util:map>
-	
+	</util:map>	
 	<!-- Course Management site role and group provider services. -->
 	<!--
 		TODO These bean definitions should really be kept within the project itself

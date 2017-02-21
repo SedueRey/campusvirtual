@@ -64,7 +64,7 @@ public class courseManagementRosterSincro implements Job{
 	
 	private String termEid; 
 	
-	static String  sqlSelectRealms = "select site_id from udl_cm_realms_to_update where estat = 0" ; 
+	static String  sqlSelectRealms = "select site_id from udl_cm_realms_to_update where estat = 0 and anyaca = ?"; 
 	static String  sqlUpdateEstat = "update udl_cm_realms_to_update set estat = 1 where site_id = ? and anyaca = ?";
 	
 	protected static Pattern termEidPattern = Pattern.compile(".*(?i)term=");	
@@ -96,7 +96,7 @@ public class courseManagementRosterSincro implements Job{
 		actAsAdmin();
 				
 		//recuperem term del nom del job
-		String jobName = context.getJobDetail().getKey().getName();
+		String jobName = context.getJobDetail().getName();
 		if (jobName != null) {
 			String[] splitJobName = termEidPattern.split(jobName);			
 			if (splitJobName.length == 2) {
@@ -130,7 +130,8 @@ public class courseManagementRosterSincro implements Job{
         		String site_id = "";        		
         		sakaiConnection = instanciaSqlService.borrowConnection();         		
         		sakaiConnection.setAutoCommit(false);        		
-        		sakaiStatement = sakaiConnection.prepareStatement(sqlSelectRealms);        		        		
+        		sakaiStatement = sakaiConnection.prepareStatement(sqlSelectRealms);
+        		sakaiStatement.setString(1,academicSessionEid);  
         		ResultSet rst = sakaiStatement.executeQuery();   
         		
         		while (rst.next()) {        			
