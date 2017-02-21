@@ -140,55 +140,61 @@ public abstract class SectionManagerImpl implements SectionManager, SiteAdvisor 
 			if(log.isDebugEnabled()) log.debug("SiteAdvisor " + this.getClass().getCanonicalName() + " ignoring site " + site.getTitle() + ", which is not a course site");
 			return;
 		}*/
-		
-		// Get our app config and the site properties
-		ExternalIntegrationConfig appConfig = getConfiguration(null);
-		ResourceProperties siteProps = site.getProperties();
-
-		// If we're configured to be mandatory auto or mandatory manual, handle those conditions and return
-		if(handlingMandatoryConfigs(appConfig, site)) {
-			if(log.isDebugEnabled()) log.debug(this.getClass().getCanonicalName() + " finished decorating site " + site.getTitle() + " for " + appConfig);
-			return;
-		}
-		
-		// Set the defaults for non-mandatory sites
-		setSiteDefaults(site, appConfig, siteProps);
-		
-		// If this site is manually managed, it could have been just changed to be manual.
-		// In that case, we flip the formerly "provided" users to be non-provided so they stay in the section.
-		if("false".equals(siteProps.getProperty(CourseImpl.EXTERNALLY_MAINTAINED))) {
-			if(log.isDebugEnabled()) log.debug("SiteAdvisor " + this.getClass().getCanonicalName() + " stripping provider IDs from all sections in site " + site.getTitle() + ".  The site is internally managed.");
-			for(Iterator iter = getSiteGroups(site).iterator(); iter.hasNext();) {
-				Group group = (Group)iter.next();
-				if(group.getProviderGroupId() == null) {
-					// This wasn't provided, so skip it
-					continue;
-				}
-				group.setProviderGroupId(null);
-				
-				// Add members to the groups based on the current (provided) memberships
-				Set members = group.getMembers();
-				for(Iterator memberIter = members.iterator(); memberIter.hasNext();) {
-					Member member = (Member)memberIter.next();
-					if(member.isProvided()) {
-						group.addMember(member.getUserId(), member.getRole().getId(), member.isActive(), false);
+    	
+    	if ("course".equalsIgnoreCase(site.getType()) || "intranet".equalsIgnoreCase(site.getType()) || "comunicacio".equalsIgnoreCase(site.getType())) { 	
+    	
+			// Get our app config and the site properties
+			ExternalIntegrationConfig appConfig = getConfiguration(null);
+			ResourceProperties siteProps = site.getProperties();
+	
+			// If we're configured to be mandatory auto or mandatory manual, handle those conditions and return
+			if(handlingMandatoryConfigs(appConfig, site)) {
+				if(log.isDebugEnabled()) log.debug(this.getClass().getCanonicalName() + " finished decorating site " + site.getTitle() + " for " + appConfig);
+				return;
+			}
+			
+			// Set the defaults for non-mandatory sites
+			setSiteDefaults(site, appConfig, siteProps);
+			
+			// If this site is manually managed, it could have been just changed to be manual.
+			// In that case, we flip the formerly "provided" users to be non-provided so they stay in the section.
+			if("false".equals(siteProps.getProperty(CourseImpl.EXTERNALLY_MAINTAINED))) {
+				if(log.isDebugEnabled()) log.debug("SiteAdvisor " + this.getClass().getCanonicalName() + " stripping provider IDs from all sections in site " + site.getTitle() + ".  The site is internally managed.");
+				for(Iterator iter = getSiteGroups(site).iterator(); iter.hasNext();) {
+					Group group = (Group)iter.next();
+					if(group.getProviderGroupId() == null) {
+						// This wasn't provided, so skip it
+						continue;
+					}
+					group.setProviderGroupId(null);
+					
+					// Add members to the groups based on the current (provided) memberships
+					Set members = group.getMembers();
+					for(Iterator memberIter = members.iterator(); memberIter.hasNext();) {
+						Member member = (Member)memberIter.next();
+						if(member.isProvided()) {
+							group.addMember(member.getUserId(), member.getRole().getId(), member.isActive(), false);
+						}
 					}
 				}
-			}
-		} else {
-			// This is an externally managed site, so remove any groups without a category and without a providerId
-			for(Iterator<Group> iter = getSiteGroups(site).iterator(); iter.hasNext();) {
-				Group group = iter.next();
-				ResourceProperties props = group.getProperties();
-				if(group.getProviderGroupId() == null && (props != null &&
-					props.getProperty(CourseSectionImpl.CATEGORY) != null)) {
-					// This is a section, and it doesn't have a provider id
-					iter.remove();
+			} else {
+				// This is an externally managed site, so remove any groups without a category and without a providerId
+				for(Iterator<Group> iter = getSiteGroups(site).iterator(); iter.hasNext();) {
+					Group group = iter.next();
+					ResourceProperties props = group.getProperties();
+					if(group.getProviderGroupId() == null && (props != null &&
+						props.getProperty(CourseSectionImpl.CATEGORY) != null)) {
+						// This is a section, and it doesn't have a provider id
+						iter.remove();
+					}
 				}
+				// Update the sections from CM.
+				syncSections(site);
 			}
-			// Update the sections from CM.
-			syncSections(site);
-		}
+    	} else {
+    		if(log.isDebugEnabled()) log.debug("SiteAdvisor " + this.getClass().getCanonicalName() + " ignoring site " + site.getTitle() + ", which is not a course, intranet or comunicacio site");
+			return;
+    	}
 	}
 
     private boolean handlingMandatoryConfigs(ExternalIntegrationConfig appConfig, Site site) {
