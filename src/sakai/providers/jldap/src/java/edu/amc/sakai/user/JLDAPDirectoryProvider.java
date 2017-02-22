@@ -702,8 +702,10 @@ public class JLDAPDirectoryProvider implements UserDirectoryProvider, LdapConnec
 							ldapEid = ldapEid.toLowerCase();
 
 						UserEdit ue = usersToSearchInLDAP.get(ldapEid);
-						mapUserDataOntoUserEdit(ldapUserData, ue);
-						usersToSearchInLDAP.remove(ldapEid);
+						if (ue!=null) {
+							mapUserDataOntoUserEdit (ldapUserData, ue);
+							usersToSearchInLDAP.remove(ldapEid);
+						}
 					}
 					
 					// see if there are any users that we could not find in the LDAP query
