@@ -12,7 +12,7 @@ body{
 		border-top: 95px solid $primary-color;
 		padding: 75px 0 0 260px;
 		@media #{$phone}{
-			border-top: 55vh solid $primary-color;
+			border-top: 35vh solid $primary-color;
 			padding: 16px 0 0 0;
 		}
 		&:before{
@@ -30,13 +30,13 @@ body{
 			}
 			@media #{$phone}{
 				content: " ";
-				height: 55vh;
-				top: 0;
-				left: 0;
+				height: 54vh;
+				top: -58vh;
+				left: -135vw;
 				background: #612045;
 				box-shadow: inset 0px 0px 7px 0px rgba(87,13,55,0.5);
 				right: 0;
-				clip-path: polygon(0 0%, 55% 0, 100% 76.6%, 0% 100%);
+				transform: rotate(45deg);
 			}
 		}
 		&:after{
@@ -58,20 +58,24 @@ body{
 }
 
 #sociallinks{
-	position: absolute;
-    z-index: 9999;
+    position: absolute;
     height: 40px;
-	width: 149px;
-	top: 152px;
-	left: 12px;
+    width: 149px;
+    top: 152px;
+    left: 12px;
     @media #{$desktop}{
+    	z-index: 9999;
     }
     @media #{$phone}{
-    	top: 37vh;
-    	width: 100%;
-    	text-align: center;
-    	left: 0;
-    	right: 0;
+    	top: 35vh;
+	    width: 100%;
+	    text-align: center;
+	    left: 0;
+	    right: 0;
+	    background-color: #521839;
+	    padding: 5px 0;
+	    height: 50px;
+    	z-index: 999;
     }
 	ul{
 		list-style: none;
@@ -103,10 +107,10 @@ body{
 	width: 313px;
 	z-index: 9999;
 	@media #{$phone}{
-		left: 5%;	
-		top: 10px;
-		width: 90%;
-		background-size: contain;
+      	    left: 15%;
+	    top: 5px;
+	    width: 70%;
+	    background-size: contain;
 	}
 }
 
