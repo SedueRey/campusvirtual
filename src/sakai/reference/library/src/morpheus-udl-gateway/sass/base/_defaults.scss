@@ -29,14 +29,14 @@ body{
 		    	transform: rotate(72deg);	
 			}
 			@media #{$phone}{
-				content: " ";
-				height: 54vh;
-				top: -58vh;
-				left: -135vw;
-				background: #612045;
-				box-shadow: inset 0px 0px 7px 0px rgba(87,13,55,0.5);
-				right: 0;
-				transform: rotate(45deg);
+			    content: " ";
+			    height: 54vh;
+			    top: -27vh;
+			    background: #612045;
+			    box-shadow: inset 0px 0px 7px 0px rgba(87,13,55,0.5);
+			    right: 0;
+			    transform: rotate(45deg);
+			    width: 54vh;
 			}
 		}
 		&:after{
