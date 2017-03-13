@@ -1835,11 +1835,15 @@ body > .portletBody > .action {
 /* directURL popup */
 nav.Mrphs-container--toolTitleNav {
         z-index: 100001 !important;
+	margin-top: 1em;
 }
 /* menu off user icon, site menu in narrow, site menu in  wide mode */
-.Mrphs-mainHeader, .Mrphs-skipNav__menu, #selectSiteModal {
+.Mrphs-skipNav__menu, #selectSiteModal {
         z-index: 100002 !important;
 	position:relative;
+}
+.Mrphs-mainHeader{
+        z-index: 100002 !important;
 }
 /* chat open button */
 #Mrphs-footerApp__chat {
